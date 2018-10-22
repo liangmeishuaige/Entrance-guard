@@ -1,0 +1,268 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/1.css">
+
+<script src="js/jquery.min.js"> </script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<style>
+
+
+body{
+background-repeat:no-repeat;
+background-size:100% 100%;
+background-attachment:fixed;
+background-image:url("images/bgimg6.jpg");
+background-position:center;           
+
+
+}
+</style>
+<script>
+$(window).on('scroll', function() {
+	var scroll = $(window).scrollTop();
+
+	if (scroll >= 110) {
+		$('#header').addClass('fixed');
+	} else {
+		$('#header').removeClass('fixed');
+	}
+});
+</script>
+
+<head>
+
+<body>
+<header id="header">
+		
+		<div style="text-align:center">
+     <img src="images/logo.png" style="vertical-align:middle;" height="40px" width="120px">
+     <span style="font-size:40px;opacity:1;font-family:楷体;color:white;">欢迎来到虹软小区！</span>
+ </div>
+	
+		
+		<section style="background-color:gray">
+<div class="col-md-4 col-sm-9" style="background-color:gray;">
+        <div style="opacity:1"><p style="font-size:20px;text-align:center;color:white;">首页</p>    
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-9" style="background-color:gray">
+         <div><p style="font-size:20px;text-align:center;color:white;">日常公告</P>    
+        </div></div>		 
+		  <div class="col-md-4 col-sm-9" style="background-color:gray;">		  
+		  <div><p style="font-size:20px;text-align:center;color:white;">关于我们</P>    
+        </div></div>
+	</header>	
+
+		  </section>
+	
+	<br><br><br><br><br>	<br><br><br><br><br>	
+
+<section>
+<div class="col-md-5 col-sm-4"></div>
+<div class="col-md-6 col-sm-4">
+<div style="float:right" style="text-align:center">
+<p style="text-align:center;font-size:30px;color:white">引领计算摄影与视觉人工智能未来<br>
+创造“睛”彩智慧生活<br>
+<p style="text-align:center;font-size:25px;font-family:楷体;color:white">———杭州虹软智慧门禁系统</p>></p>
+</div>
+</div><br>
+</section>
+
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br> 
+	
+<section style="background-color:red"><div class="col-md-3 col-sm-4"></div>
+<div class="col-md-3 col-sm-4" style="opacity:1" >
+        <div class="person" style="text-align:center"> <img src="images/1.png" alt="" class="img-responsive"  style="transform:scale(0.7)" onClick="showBox()">       
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4" style="opacity:1">
+        <div class="person" style="text-align:center"> <img src="images/2.png" alt="" class="img-responsive"  style="transform:scale(0.7)" onclick="showBox1()">
+         </div></div>		 
+		  <div class="col-md-3 col-sm-4" >
+		 
+		 <div class="person" style="text-align:center;opacity:1"> <img src="images/3.png" alt="" class="img-responsive"  style="transform:scale(0.7)" onclick="showBox3()">
+		  </div></div>
+		  </section>
+	<iframe name="formsubmit" style="display:none;top:300px">    
+</iframe>
+<div>
+ 
+
+ <div class="event" id="login_box" style="display: none;" target="formsubmit">
+		<div class="login" style="height:400px">
+			<div class="title">
+				<span class="t_txt">普通用户登录</span>
+				<span class="del" onClick="deleteLogin()">X</span>
+			</div>
+			<form action="login.php" method="post">
+				<input type="text" name="userNames" id="" value="" placeholder="请输入用户名"/>
+				<input type="password" name="passwords" id="" value="" placeholder="请输入密码"/>
+
+				<input type="submit"value="登录" class="btn5" /></form>	<br>
+				<div class="text-center">
+				<a href="javascript:void(0)" style="color:black" onclick="showBox1()">没有账号？ 马上注册</a><br>
+				<a href="javascript:void(0)" style="color:black" onclick="showBox2()" font-size:15px>管理员登录入口</a>
+				</div>
+				</div>
+				</div>
+				
+				
+				
+				
+				
+				<div class="event" id="login_box2" style="display: none;" target="formsubmit">
+		<div class="login" style="height:350px">
+			<div class="title" >
+				<span class="t_txt">管理员登录</span>
+				<span class="del" onClick="deleteLogin2()">X</span>
+			</div>
+			<form action="check2.php" method="post">
+				<input type="text" name="managerName" id="" value="" placeholder="请输入管理员号码"/>
+				<input type="password" name="managerpassword" id="" value="" placeholder="请输入管理员密码"/>
+				<input type="submit"value="登录" class="btn5" /></form>	<br>
+				<div class="text-center">
+				
+				<a href="javascript:void(0)" style="color:black;font-size:10px" onclick="showBox4()" font-size:15px>普通用户登录入口</a>
+				</div>
+				</div>
+				</div>
+				
+				
+				
+				
+		<div class="event" id="login_box1" style="display: none;" target="formsubmit">
+		<div class="login" style="height:800px;float:absolute;top:100px">
+			<div class="title">
+				<span class="t_txt">业主注册</span>
+				<span class="del" onClick="deleteLogin1()">X</span>
+			</div>
+			<form action="resident-register.php" method="post" style="float:absolute;top:100px">
+				<input type="text" name="userNames" id="" value="" placeholder="请输入姓名"style="margin:8px"/>
+				<input type="text" name="idcard" id="" value="" placeholder="请输入身份证号"style="margin:8px"/>
+				<input type="password" name="passwords" id="" value="" placeholder="请输入密码"style="margin:8px"/>
+				<input type="password" name="confirmPasswords" id="" value="" placeholder="请再次输入密码"style="margin:8px"/>
+				<input type="text" name="adress" id="" value="" placeholder="家庭住址"style="margin:8px"/>
+				<input type="file" name=""  value="" placeholder="选择照片"/>
+
+      <input type="submit"   value="注册" class="btn5" />
+			</form>	
+		</div>
+			 
+		</div>
+		
+		<div class="event" id="login_box3" style="display: none;" target="formsubmit">
+		<div class="login" style="height:800px">
+			<div class="title">
+				<span class="t_txt">访客注册</span>
+				<span class="del" onClick="deleteLogin3()">X</span>
+			</div>
+			<form action="tourist.php" method="post">
+				<input type="text" name="touristname" id="" value="" placeholder="请输入您的姓名"style="margin:8px"/>
+				<input type="password" name="password" id="" value="" placeholder="请输入密码"style="margin:8px"/>
+				<input type="password" name="confirmPassword" id="" value="" placeholder="请再次输入密码"style="margin:8px"/>			
+				<input type="text" name="resident" id="" value="" placeholder="请输入业主姓名"style="margin:8px"/>
+				<input type="text" name="idcard" id="" value="" placeholder="请输入您的身份证号"style="margin:8px"/>
+				<input type="file" name="picture"  value="" placeholder="选择照片"/>
+
+      <input type="submit"   value="注册" class="btn5" />
+			</form>	
+		</div>
+			 
+		</div>
+	
+<div class="bg_color" onClick="deleteLogin()" id="bg_filter" style="display: none;">
+</div></div>
+
+
+
+<script>
+
+
+
+function showBox(){
+	var show=document.getElementById("login_box");
+	var bg_filter=document.getElementById("bg_filter");
+	show.style.display="block";
+	bg_filter.style.display="block";
+	
+};
+	function showBox1(){
+	var del=document.getElementById("login_box");
+	var bg_filter=document.getElementById("bg_filter");
+	bg_filter.style.display="none";
+	del.style.display="none";
+	var show=document.getElementById("login_box1");
+	var bg_filter=document.getElementById("bg_filter");
+	show.style.display="block";
+	bg_filter.style.display="block";
+};
+
+function showBox2(){
+	var del=document.getElementById("login_box");
+	var bg_filter=document.getElementById("bg_filter");
+	bg_filter.style.display="none";
+	del.style.display="none";
+	var show=document.getElementById("login_box2");
+	var bg_filter=document.getElementById("bg_filter");
+	show.style.display="block";
+	bg_filter.style.display="block";
+};
+
+function showBox3(){
+	var show=document.getElementById("login_box3");
+	var bg_filter=document.getElementById("bg_filter");
+	show.style.display="block";
+	bg_filter.style.display="block";
+	
+};
+function showBox4(){
+	var del=document.getElementById("login_box2");
+	var bg_filter=document.getElementById("bg_filter");
+	bg_filter.style.display="none";
+	del.style.display="none";
+	var show=document.getElementById("login_box");
+	var bg_filter=document.getElementById("bg_filter");
+	show.style.display="block";
+	bg_filter.style.display="block";
+};
+
+
+function deleteLogin(){
+	var del=document.getElementById("login_box");
+	var bg_filter=document.getElementById("bg_filter");
+	bg_filter.style.display="none";
+	del.style.display="none";
+};
+function deleteLogin1(){
+	var del=document.getElementById("login_box1");
+	var bg_filter=document.getElementById("bg_filter");
+	bg_filter.style.display="none";
+	del.style.display="none";
+};
+function deleteLogin3(){
+	var del=document.getElementById("login_box3");
+	var bg_filter=document.getElementById("bg_filter");
+	bg_filter.style.display="none";
+	del.style.display="none";
+};
+
+function deleteLogin2(){
+	var del=document.getElementById("login_box2");
+	var bg_filter=document.getElementById("bg_filter");
+	bg_filter.style.display="none";
+	del.style.display="none";
+};
+
+</script>		 
+		  
+
+
+</body>
+</html>
