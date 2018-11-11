@@ -10,18 +10,17 @@
 	const SECRET_KEY = 'NkPvLLkO3EmDmI7VsMXloYKCZUhbZ9VY';
 
 	$client = new AipFace(APP_ID, API_KEY, SECRET_KEY);
-
-	include 'OneFaceHandle.php';
+	var_dump($_POST);
 
 	$groupId = "001";//组ID
 	
-	$image = $base64_1;
+	$image = $_POST["base64_data"];
 
 	$imageType = "BASE64";
 
 	$groupIdList = "001";
 	
-	$userId = $_POST["userId"];//用户ID
+	$userId = $_POST["user_id"];//用户ID
 	
 	$options = array();
 	$options["quality_control"] = "NORMAL";
@@ -40,8 +39,8 @@
 	
 	$facetoken = $result["result"]["face_token"];
 	
-	//var_dump($result);
-	//var_dump($result2);
+	var_dump($result);
+	var_dump($result2);
 	
 	echo "\r\n";
 	
