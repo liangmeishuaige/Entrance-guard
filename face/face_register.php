@@ -19,9 +19,11 @@
 
 	$groupId = "001";//组ID
 
-	$userId = $_POST["userId"];//用户ID
+	$userId = $_POST["passwords"];//用户ID
 	
-	var_dump($_POST);
+	
+	
+	//var_dump($_POST);
 	
 	//echo $userId;
 	
@@ -29,6 +31,8 @@
 	// 调用人脸注册
 	$result = $client->addUser($image, $imageType, $groupId, $userId);
 	
-	var_dump($result);
+	$error_code = $result["error_code"];
+	alert('$error_code');
+	//var_dump($result);
 
 ?>
