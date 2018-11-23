@@ -2,7 +2,7 @@
 
 	include 'AipFace.php';
 	//连接数据库代码块
-	include 'lianjie.php';
+	//include 'lianjie.php';
 	require_once 'AipFace.php';
 
 	// 你的 APPID AK SK
@@ -47,52 +47,45 @@
 	
 	if($score>=80){
 		echo 1;
+		//输出
+		//$encode = '<img src="data:image/jpg/png/gif;base64,' . $image .'" >'; 
+		//echo $encode;
 		//现在是Henry改写的
 		//功能：
-		//		记录此时验证拍下的照片，以时间戳为文件名，传入数据库
+		//		记录此时验证成功拍下的照片，以时间戳为文件名，传入数据库
 		//
-		$file = $_FILES["img"];
+		//$file = $_FILES["$userId"];
 		// 先判断有没有错
-		if ($file["error"] == 0) {
-			// 成功 
-			// 判断传输的文件是否是图片，类型是否合适
-			// 获取传输的文件类型
-			$typeArr = explode("/", $file["type"]);
-			if($typeArr[0]== "image")
-			{
-				// 如果是图片类型
-				$imgType = array("png","jpg","jpeg");
-				if(in_array($typeArr[1], $imgType)){ // 图片格式是数组中的一个
-					// 类型检查无误，保存到文件夹内
-					// 给图片定一个新名字 (使用时间戳，防止重复)
-					$fname = date("Y-m-d-H-i-s-A",time());//时间做文件名,年月日+具体时间
-					$ext = strrchr($file['name'],'.');//截取文件的扩展名
-					$path = './'.date('Y/m/d');//文件存储的路径
-					//如果目录不存在，就创建目录
-					if(!is_dir($path))
-					{
-						mkdir($path,0777,true);
-					}
-					$saveFile = $path.'/'.$fname.$ext;//保存的文件名
+		//将图片格式从base64解码
+		//$image= explode(',', $image);	//截取data:image/png;base64, 这个逗号后的字符
+		$data= base64_decode($image);//对截取后的字符使用base64_decode进行解码
+		
+		$fname = date("H-i-s-A",time()).'_'.$userId.'.jpg';//时间做文件名 具体时间_userid.png
+		//$ext = strrchr($file['name'],'.');//截取文件的扩展名
+		$path = './'.'register'.'/'.date('Y/m/d');//验证文件存储的路径
+		//如果目录不存在，就创建目录
+		if(!is_dir($path))
+		{
+			mkdir($path,0777,true);
+		}
+		$saveFile = $path.'/'.$fname;//保存的文件名	
+		echo $saveFile;
+		// file_put_contents函数的第一个参数必须保证存在该目录
+		//我已经创建好的目录 register/year/month/day,因此第一个参数中最多只能再有一个/符号，一开始我的第一个参数是$path.'/'.$fname.'/'.$userId.'.png'这样子是不行的找不到目录的！
+		$saveimg=file_put_contents($saveFile,$data);
+		//if(!$saveimg)
+		//{
+			//return json(['data'=>null,"code"=>1,"msg"=>"图片生成失败"]);
+		//}
+		//else{
+			//return json(['data'=>1,"code"=>0,"msg"=>"图片生成成功"]);
+			//}
 					// 将上传的文件写入到文件夹中
 					// 参数1: 图片在服务器缓存的地址
 					// 参数2: 图片的目的地址（最终保存的位置）
 					// 最终会有一个布尔返回值
-					//echo move_uploaded_file($file["tmp_name"],$saveFile)?"ok":"fail";
-					
-					move_uploaded_file($file["tmp_name"],$saveFile);
-				};
-				else
-				{
-					// 不是图片类型
-					echo "没有图片，再检查一下吧！";
-				};
-		}
-		else
-		{
-			// 失败
-			echo $file["error"];
-		}
+					//echo move_uploaded_file($file["tmp_name"],$saveFile)?"ok":"fail";	
+		//move_uploaded_file($file["tmp_name"],$saveFile);
 		//
 		//
 		
@@ -100,12 +93,29 @@
 		//$result = $client->updateUser($image, $imageType, $groupId, $userId);
 		
 		//var_dump($result);
-	}else{
+	
+	}
+	else{
 		//现在是Henry改写的
 		//功能：
-		//		记录此时验证拍下的照片，以时间戳为文件名，传入数据库
+		//		记录此时验证失败拍下的照片，以时间戳为文件名，传入数据库
 		//
 		echo 0;
+		$data= base64_decode($image);//对截取后的字符使用base64_decode进行解码
+		
+		$fname = date("H-i-s-A",time()).'_'.$userId.'.jpg';//时间做文件名 具体时间_userid.png
+		//$ext = strrchr($file['name'],'.');//截取文件的扩展名
+		$path = './'.'noneregister'.'/'.date('Y/m/d');//验证文件存储的路径
+		//如果目录不存在，就创建目录
+		if(!is_dir($path))
+		{
+			mkdir($path,0777,true);
+		}
+		$saveFile = $path.'/'.$fname;//保存的文件名	
+		echo $saveFile;
+		// file_put_contents函数的第一个参数必须保证存在该目录
+		//我已经创建好的目录 register/year/month/day,因此第一个参数中最多只能再有一个/符号，一开始我的第一个参数是$path.'/'.$fname.'/'.$userId.'.png'这样子是不行的找不到目录的！
+		$saveimg=file_put_contents($saveFile,$data);
 	}
 
 ?>

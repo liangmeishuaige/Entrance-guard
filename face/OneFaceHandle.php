@@ -24,7 +24,7 @@ if ($file["error"] == 0) {
    			*后端自己修改连接数据库和保存位置
    			*/
    		//$fname = rand(10000,99999);//随机文件名
-   		$fname = date("H-i-s-A",time());//时间做文件名
+   		$fname = date("H-i-s-A",time());//时间做文件名,具体时间
 			$ext = strrchr($file['name'],'.');//截取文件的扩展名
 			$path = './'.date('Y/m/d');//文件存储的路径
 			//如果目录不存在，就创建目录
