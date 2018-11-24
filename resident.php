@@ -44,11 +44,11 @@ body{
 </div>
 	<div style="background-color: #D5DCD7;padding-left:820px;">
 <table   style="width=600px;text-align:left;"><tr>
-	<td style="width:70px"><img src="全选.png" width="13" height="10" alt=""/>&nbsp;全选</td>
-	<td style="width:70px"><img src="添加.png"  width="13" height="10" alt=""/>&nbsp;添加</td>
-	<td style="width:70px"><img src="修改.png" width="13" height="10" alt=""/>&nbsp;修改</td>
-	<td style="width:70px"><img src="删除.png" width="13" height="10" alt=""/>&nbsp;删除</td>
-	<td style="width:70px"><img src="保存.png" width="13" height="10" alt=""/>&nbsp;保存</td></tr>
+	<td style="width:70px"><img src="全选图片.png" width="13" height="10" alt=""/>&nbsp;全选</td>
+	<td style="width:70px"><img src="添加图片.png"  width="13" height="10" alt=""/>&nbsp;添加</td>
+	<td style="width:70px"><img src="修改图片.png" width="13" height="10" alt=""/>&nbsp;修改</td>
+	<td style="width:70px"><img src="删除图片.png" width="13" height="10" alt=""/>&nbsp;删除</td>
+	<td style="width:70px"><img src="保存图片.png" width="13" height="10" alt=""/>&nbsp;保存</td></tr>
 </table>
 </div>
   <div style="padding-top: 10px;padding-bottom: 10px;background-color: #DDE8DF">
