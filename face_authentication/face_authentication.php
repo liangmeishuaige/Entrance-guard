@@ -8,7 +8,7 @@
 	//include 'lianjie.php';
 	require_once 'AipFace.php';
 
-	// ï¿½ï¿½ï¿½ APPID AK SK
+	// ï¿½ï¿½ï¿?APPID AK SK
 	const APP_ID = '14511390';
 	const API_KEY = 'LSfn1X7S0FqfDq1GvxTGloVe';
 	const SECRET_KEY = 'NkPvLLkO3EmDmI7VsMXloYKCZUhbZ9VY';
@@ -55,18 +55,52 @@
 	//echo "\r\n";
 	
 	if($score>=80){
-
+		
 		echo "Welcome! ".$group_id." : ".$user_id;
-		
+		//ÏÖÔÚÊÇHenry¸ÄĞ´µÄ
+		//¹¦ÄÜ£º
+		//		¼ÇÂ¼´ËÊ±ÑéÖ¤³É¹¦ÅÄÏÂµÄÕÕÆ¬£¬ÒÔÊ±¼ä´ÁÎªÎÄ¼şÃû£¬´«ÈëÊı¾İ¿â
+		//
+		$data= base64_decode($image);//¶Ô½ØÈ¡ºóµÄ×Ö·ûÊ¹ÓÃbase64_decode½øĞĞ½âÂë
+		$fname = date("H-i-s-A",time()).'_'.$userId.'.jpg';//Ê±¼ä×öÎÄ¼şÃû ¾ßÌåÊ±¼ä_userid.png
+		$path = './'.'register'.'/'.date('Y/m/d');//ÑéÖ¤ÎÄ¼ş´æ´¢µÄÂ·¾¶
+		//Èç¹ûÄ¿Â¼²»´æÔÚ£¬¾Í´´½¨Ä¿Â¼
+		if(!is_dir($path))
+		{
+			mkdir($path,0777,true);
+		}
+		$saveFile = $path.'/'.$fname;//±£´æµÄÎÄ¼şÃû	
+		// file_put_contentsº¯ÊıµÄµÚÒ»¸ö²ÎÊı±ØĞë±£Ö¤´æÔÚ¸ÃÄ¿Â¼
+		//ÎÒÒÑ¾­´´½¨ºÃµÄÄ¿Â¼ register/year/month/day,Òò´ËµÚÒ»¸ö²ÎÊıÖĞ×î¶àÖ»ÄÜÔÙÓĞÒ»¸ö/·ûºÅ£¬Ò»¿ªÊ¼ÎÒµÄµÚÒ»¸ö²ÎÊıÊÇ$path.'/'.$fname.'/'.$userId.'.png'ÕâÑù×ÓÊÇ²»ĞĞµÄÕÒ²»µ½Ä¿Â¼µÄ£¡
+		$saveimg=file_put_contents($saveFile,$data);
 
 		
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// µ÷ÓÃÈËÁ³¸üĞÂ
 		$result3 = $client->updateUser($image, $imageType, $group_id, $user_id);
 		
 
 		//var_dump($result3);
 	}else{
 		echo "stranger";
+		//ÏÖÔÚÊÇHenry¸ÄĞ´µÄ
+		//¹¦ÄÜ£º
+		//		¼ÇÂ¼´ËÊ±ÑéÖ¤³É¹¦ÅÄÏÂµÄÕÕÆ¬£¬ÒÔÊ±¼ä´ÁÎªÎÄ¼şÃû£¬´«ÈëÊı¾İ¿â
+		//
+		$data= base64_decode($image);//¶Ô½ØÈ¡ºóµÄ×Ö·ûÊ¹ÓÃbase64_decode½øĞĞ½âÂë
+		
+		$fname = date("H-i-s-A",time()).'_'.$userId.'.jpg';//Ê±¼ä×öÎÄ¼şÃû ¾ßÌåÊ±¼ä_userid.png
+		//$ext = strrchr($file['name'],'.');//½ØÈ¡ÎÄ¼şµÄÀ©Õ¹Ãû
+		$path = './'.'none_register'.'/'.date('Y/m/d');//ÑéÖ¤ÎÄ¼ş´æ´¢µÄÂ·¾¶
+		//Èç¹ûÄ¿Â¼²»´æÔÚ£¬¾Í´´½¨Ä¿Â¼
+		if(!is_dir($path))
+		{
+			mkdir($path,0777,true);
+		}
+		$saveFile = $path.'/'.$fname;//±£´æµÄÎÄ¼şÃû	
+		echo $saveFile;
+		// file_put_contentsº¯ÊıµÄµÚÒ»¸ö²ÎÊı±ØĞë±£Ö¤´æÔÚ¸ÃÄ¿Â¼
+		//ÎÒÒÑ¾­´´½¨ºÃµÄÄ¿Â¼ register/year/month/day,Òò´ËµÚÒ»¸ö²ÎÊıÖĞ×î¶àÖ»ÄÜÔÙÓĞÒ»¸ö/·ûºÅ£¬Ò»¿ªÊ¼ÎÒµÄµÚÒ»¸ö²ÎÊıÊÇ$path.'/'.$fname.'/'.$userId.'.png'ÕâÑù×ÓÊÇ²»ĞĞµÄÕÒ²»µ½Ä¿Â¼µÄ£¡
+		$saveimg=file_put_contents($saveFile,$data);
 
 	}
 
