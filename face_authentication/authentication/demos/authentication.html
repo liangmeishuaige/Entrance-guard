@@ -102,7 +102,7 @@
 					document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 				}
 			}
-			xmlhttp.open("POST","../../face_authentication.php",true);
+			xmlhttp.open("POST","../../face_authentication.php",false);
 			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			xmlhttp.send("base64_data="+encodeURIComponent(base64Data));
 			
