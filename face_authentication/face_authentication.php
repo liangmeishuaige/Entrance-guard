@@ -58,9 +58,9 @@
 		
 		
 		// 调用人脸更新
-		//$result = $client->updateUser($image, $imageType, $groupId, $userId);
+		$result3 = $client->updateUser($image, $imageType, $group_id, $user_id);
 		
-		//var_dump($result);
+		//var_dump($result3);
 	}else{
 		echo "stranger";
 	}
