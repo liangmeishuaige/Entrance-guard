@@ -8,7 +8,7 @@
 	//include 'lianjie.php';
 	require_once 'AipFace.php';
 
-	// ï¿½ï¿½ï¿½ APPID AK SK
+	// ï¿½ï¿½ï¿?APPID AK SK
 	const APP_ID = '14511390';
 	const API_KEY = 'LSfn1X7S0FqfDq1GvxTGloVe';
 	const SECRET_KEY = 'NkPvLLkO3EmDmI7VsMXloYKCZUhbZ9VY';
@@ -58,16 +58,45 @@
 
 		echo "Welcome! ".$group_id." : ".$user_id;
 		
-
+		//ÏÖÔÚÊÇHenryÐÞ¸ÄµÄ
+		//¹¦ÄÜ£º
+		//¼ÇÂ¼´ËÊ±ÑéÖ¤³É¹¦ÅÄÏÂµÄÕÕÆ¬£¬ÒÔÊ±¼ä´ÁÎªÎÄ¼þÃû£¬´«ÈëÊý¾Ý¿â
+		sleep(6);//ÑÓÊ±Ö´ÐÐ±£´æ3Ãë
+		$data=base64_decode($image);
+		$fname=date("H-i-s-A",time()+8*3600).'_'.$userId.'.jpg';
+		$path='./'.'register'.'/'.date('Y/m/d');
+		if(!is_dir($path))
+		{
+			mkdir($path,0777,true);
+		}
+		$saveFile=$path.'/'.$fname;//±£´æµÄÎÄ¼þÃû
+		$saveimg=file_put_contents($saveFile,$data);
+		
 		
 		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		$result3 = $client->updateUser($image, $imageType, $group_id, $user_id);
 		
 
 		//var_dump($result3);
-	}else{
+	}else if($score>0&&$score<80){	
 		echo "stranger";
+		//ÏÖÔÚÊÇHenryÐÞ¸ÄµÄ
+		//¹¦ÄÜ£º
+		//¼ÇÂ¼´ËÊ±ÑéÖ¤Ê§°ÜÅÄÏÂµÄÕÕÆ¬£¬ÒÔÊ±¼ä´ÁÎªÎÄ¼þÃû£¬´«ÈëÊý¾Ý¿â
+		sleep(6);//ÑÓÊ±Ö´ÐÐ±£´æ3Ãë
+		$data=base64_decode($image);
+		$fname=date("H-i-s-A",time()+8*3600).'_'.$userId.'.jpg';
+		$path='./'.'non-register'.'/'.date('Y/m/d');
+		if(!is_dir($path))
+		{
+			mkdir($path,0777,true);
+		}
+		$saveFile=$path.'/'.$fname;//±£´æµÄÎÄ¼þÃû
+		$saveimg=file_put_contents($saveFile,$data);
+		
 
 	}
+	else 
+		echo "no one in the camera";
 
 ?>
