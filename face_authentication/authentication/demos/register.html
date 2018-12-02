@@ -58,7 +58,7 @@
 	<!-- A button for taking snaps -->
 	<form id="upload" method="post">
 	<!--	<input type="text" id="userId" name="userId" style="width: 300px"><br>	-->
-	<div id="myDiv" style="padding:0 0px 0px 41%;"><h2 id="myh2">progress:0/3</h2></div>
+	<div id="myDiv" style="padding:0 0px 0px 35%;"><h2 id="myh2">注册进度:0/3 请用正脸看着屏幕</h2></div>
 	<!--	<input type=button value="Take Snapshot" onClick="start_snapping()">	-->
 	</form>
 	
@@ -69,9 +69,14 @@
 	
 		var timer = null;
 		function start_snapping() {
+			
+			sign=document.getElementById("myh2").innerHTML;
+			sign=sign.slice(5,6);
+			console.log(sign);
+			
 			if (!timer) {
-				take_snapshot();
-				timer = setInterval( take_snapshot, 500 );
+				//take_snapshot();
+				timer = setInterval( take_snapshot, 1000 );
 			}
 		}
 		
@@ -92,15 +97,7 @@
 		}
 		
 		function upload(base64Data,){
-			var sign=document.getElementById("myh2").innerHTML;
-			sign=sign.slice(9,10);
-			console.log(sign);
-			if(sign=="3"){
-				if (timer) {
-					clearInterval( timer );
-					timer = null;
-				}
-			}
+			
 			
 			console.log(userId);
 			
@@ -123,6 +120,16 @@
 				if (xmlhttp.readyState==4 && xmlhttp.status==200)
 				{
 					document.getElementById("myh2").innerHTML=xmlhttp.responseText;
+					
+					sign=document.getElementById("myh2").innerHTML;
+					sign=sign.slice(5,6);
+					console.log(sign);
+					if(sign=="3"){
+						if (timer) {
+							clearInterval( timer );
+							timer = null;
+						}
+					}
 				}
 			}
 			xmlhttp.open("POST","../../face_register.php",false);
