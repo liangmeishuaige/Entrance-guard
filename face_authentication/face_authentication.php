@@ -54,14 +54,36 @@
 	
 	//echo "\r\n";
 	
+	//启动回话，保存前一次拍照时的userID用来和当前拍照时获取的userID进行比对
+	//目的：
+	//防止验证时同一个人的照片多次保存造成物理空间的浪费
+	if (!session_id()) session_start();
+	$lastuserid=$_SESSION["userid"];
+	$_SESSION["userid"]=$user_id;//用回话保存前一次拍照的的userID值
+	
+	//用currentuserId保存当前拍照的userId值
 	if($score>=80){
-
+		$currentuserId=$user_id;
 		echo "Welcome! ".$group_id." : ".$user_id;
 		
 		//现在是Henry修改的
 		//功能：
 		//记录此时验证成功拍下的照片，以时间戳为文件名，传入数据库
-		sleep(6);//延时执行保存3秒
+		//echo $_SESSION['userId'];
+		//echo $currentuserId;
+		if($lastuserid==$currentuserId)//如果判断为同一个人重复拍照，则不保存图片信息
+		{	
+			// do nothing
+			//echo "<br>";
+			//echo "lastuserid:".$lastuserid;
+			//echo "<br>";
+			//echo "currentuserId:".$currentuserId;
+			
+			
+		}
+		else
+		{
+		$_SESSION["userid"]=$currentuserId;
 		$data=base64_decode($image);
 		$fname=date("H-i-s-A",time()+8*3600).'_'.$userId.'.jpg';
 		$path='./'.'register'.'/'.date('Y/m/d');
@@ -76,14 +98,17 @@
 		// 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 		$result3 = $client->updateUser($image, $imageType, $group_id, $user_id);
 		
-
+		}
 		//var_dump($result3);
 	}else if($score>0&&$score<80){	
 		echo "stranger";
+		
+		echo $_SESSION['userId'];
+		echo $currentuserId;
 		//现在是Henry修改的
 		//功能：
 		//记录此时验证失败拍下的照片，以时间戳为文件名，传入数据库
-		sleep(6);//延时执行保存3秒
+		
 		$data=base64_decode($image);
 		$fname=date("H-i-s-A",time()+8*3600).'_'.$userId.'.jpg';
 		$path='./'.'non-register'.'/'.date('Y/m/d');
@@ -98,5 +123,8 @@
 	}
 	else 
 		echo "no one in the camera";
+	//不能关闭回话
+	//这将导致每一次调用php文件时，lastuserid会被重置更新
+	//session_destroy();
 
 ?>
