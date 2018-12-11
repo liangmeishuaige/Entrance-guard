@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>WebcamJS Test Page</title>
+	<style type="text/css">
+		body { font-family: Helvetica, sans-serif; }
+		h2, h3 { margin-top:0; }
+		form { margin-top: 15px; }
+		form > input { margin-right: 15px; }
+		#results { float:right; margin:20px; padding:20px; border:1px solid; background:#ccc; }
+	</style>
+	
+	<script>
+		function getCookie(cname){
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i].trim();
+				if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+			}
+			return "";
+		}
+	</script>
+	
+	<script>
+	window.onload=function(){
+	
+		//var t=setTimeout(start_snapping(),3000);
+		userId=window.location.search.slice(1);
+		start_snapping();
+	}
+	</script>
+</head>
+<body>
+	<!--<div id="results">Your captured image will appear here...</div>			
+	
+	<h1>WebcamJS Test Page</h1>
+	<h3>Demonstrates simple 320x240 capture &amp; display</h3>	-->
+	
+	<div id="my_camera" style="padding:5% 0px 0px 26%;"></div>
+	
+	<!-- First, include the Webcam.js JavaScript Library -->
+	<script type="text/javascript" src="../webcam.min.js"></script>
+	
+	<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 640,
+			height: 480,
+			image_format: 'jpeg',
+			jpeg_quality: 100
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
+	
+	<!-- A button for taking snaps -->
+	<form id="upload" method="post">
+	<!--	<input type="text" id="userId" name="userId" style="width: 300px"><br>	-->
+	<div id="myDiv" style="padding:0 0px 0px 35%;"><h2 id="myh2">注册进度:0/3 请用正脸看着屏幕</h2></div>
+	<!--	<input type=button value="Take Snapshot" onClick="start_snapping()">	-->
+	</form>
+	
+	
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+	
+	
+		var timer = null;
+		function start_snapping() {
+			
+			sign=document.getElementById("myh2").innerHTML;
+			sign=sign.slice(5,6);
+			console.log(sign);
+			
+			if (!timer) {
+				//take_snapshot();
+				timer = setInterval( take_snapshot, 1000 );
+			}
+		}
+		
+		var form = document.getElementById('upload')
+																						//var userId = document.getElementById("userId");
+		function take_snapshot() {
+																						// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+																						// display results in page
+				/*document.getElementById('results').innerHTML = 
+					'<h2>Here is your image:</h2>' + 
+					'<img src="'+data_uri+'"/>';*/
+					
+																						//console.log(data_uri);
+																						//console.log(form["userId"].value);
+			upload(data_uri,);
+			} );
+		}
+		
+		function upload(base64Data,){
+			
+			
+			console.log(userId);
+			
+			base64Data = base64Data.slice(23);
+			
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			{
+				//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{
+				// IE6, IE5 浏览器执行代码
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlhttp.onreadystatechange=function()
+			{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				{
+					document.getElementById("myh2").innerHTML=xmlhttp.responseText;
+					
+					sign=document.getElementById("myh2").innerHTML;
+					sign=sign.slice(5,6);
+					console.log(sign);
+					if(sign=="3"){
+						if (timer) {
+							clearInterval( timer );
+							timer = null;
+						}
+					}
+				}
+			}
+			xmlhttp.open("POST","../../resident_register.php",false);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send("base64_data="+encodeURIComponent(base64Data)+"&user_id="+userId+"&sign="+sign);
+			
+			
+			/*var temp_form = document.createElement("form");
+			temp_form.action = "../../face_authentication.php";
+			temp_form.target = "_blank";
+			temp_form.method = "post";
+			temp_form.style.display = "none";
+      
+			var base64_data = document.createElement("input");
+			base64_data.type = "text";
+			base64_data.name = "base64_data";
+			base64_data.value = base64Data;
+																						/*var user_id = document.createElement("input");
+																						user_id.type = "text";
+																						user_id.name = "user_id";
+																						user_id.value = userId;*/
+																						//var base64_data=document.createTextNode(base64Data);
+																						//var user_id=document.createTextNode(userId);
+			/*temp_form.appendChild(base64_data);
+																						//temp_form.appendChild(user_id);
+			document.body.appendChild(temp_form);
+			//console.log(base64Data);
+																						//console.log(userId);
+			console.log(temp_form);
+			//提交数据
+			temp_form.submit();*/
+		}
+      
+//			$.ajax({
+//       type: 'POST',
+//       url: "../../face_authentication.php",
+//     data: {
+//     'base64': base64Data,
+//   'userId': userId
+//       },
+//       dataType: 'json',
+//       timeout: 50000,
+//       success: function(data){  
+//          console.log(data);    
+//       },
+//       complete:function() {},
+//       error: function(xhr, type){
+//          alert('上传超时啦，再试试');       
+//       }
+//     });
+//		}
+	</script>
+	
+</body>
+</html>
