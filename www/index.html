@@ -1,0 +1,249 @@
+<!DOCTYPE html><html><head>
+   <title>虹软小区</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body{
+background-repeat:no-repeat;
+background-size:100% 100%;
+background-attachment:fixed;
+background-image:url("images/1.jpg");
+background-position:center;           
+}
+.bg {
+    background-repeat:no-repeat;
+background-size:100% 100%;
+background-attachment:fixed;
+background-position:center;
+}
+
+  </style>
+  <script>
+  function photo(){
+	window.open("authentication/demos/authentication.html","_blank");
+}
+  </script>
+  
+  </head>
+  <body>
+	<div class="jumbotron" bgcolor="red">
+        <h2>虹软智能门禁系统</h2>
+	
+		<button class="btn btn-info" onclick="photo();">开启</button>
+    </div>
+  
+   <ul id="myTab" class="nav nav-tabs">
+   <li class="active"><a href="#home" data-toggle="tab">主&nbsp页</a></li>
+	<li><a href="#form1" data-toggle="tab">业主登录</a></li>
+    <li><a href="#form2" data-toggle="tab">业主注册</a></li>
+	<li><a href="#form3" data-toggle="tab">访客注册</a></li>
+	<li class="dropdown">
+      <a href="#" id="myTabDrop1" class="dropdown-toggle" 
+         data-toggle="dropdown">
+         其他 <b class="caret"></b></a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+         <li><a href="#jmeter" tabindex="-1" data-toggle="tab">失物招领</a></li>
+         <li><a href="#ejb" tabindex="-1" data-toggle="tab">修缮信息</a></li>
+		 <li class="divider"></li>
+		 <li><a href="#form4" tabindex="-1" data-toggle="tab">管理员登录</a></li>
+      </ul>
+   </li></ul>
+   
+   <div id="myTabContent"  class="tab-content bg" bgcolor="red">
+   
+   <div class="tab-pane fade in active " id="home">
+  <div id="myCarousel" class="carousel slide">
+   <!-- 可轮播图片 -->
+   <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+   </ol>   
+   <div class="carousel-inner">
+      <div class="item active">
+         <img src="images/aaa.jpg" alt="First slide" class="img-responsive">
+         <div class="carousel-caption"></div>
+      </div>
+      <div class="item">
+         <img src="images/aaa.jpg" alt="Second slide"class="img-responsive">
+         <div class="carousel-caption"></div>
+      </div>
+      <div class="item">
+         <img src="images/aaa.jpg" alt="Third slide" class="img-responsive">
+         <div class="carousel-caption"></div>
+      </div>
+   </div>
+   <a class="carousel-control left" href="#myCarousel" 
+      data-slide="prev">&lsaquo;</a>
+   <a class="carousel-control right" href="#myCarousel" 
+      data-slide="next">&rsaquo;</a></div>
+   </div>
+    
+   <div class="tab-pane fade bg" id="form1" bgcolor="red">
+     <form class="form-horizontal" role="form" style="padding: 100px 200px;border:1px;" action="login.php" method="post">
+   <div class="form-group has-warning">
+      <label class="col-sm-2 control-label">用户名</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="userNames" name="userNames" type="text" 
+           placeholder="请输入用户名" value="">
+      </div>
+   </div>
+   <div class="form-group has-success">
+      <label for="inputPassword" class="col-sm-2 control-label">
+         用户密码     </label>
+      <div class="col-sm-10">
+         <input class="form-control" id="passwords"  name="passwords"type="password" 
+            placeholder="请输入密码"value="" >
+      </div>
+   </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+         <button type="submit" class="btn btn-default">登录</button>
+      </div>
+   </div>
+  </form>
+   </div>
+   
+   
+   <div class="tab-pane fade" id="form2">
+     <form class="form-horizontal" role="form" action="passion.php" method="post"  style="padding: 100px 200px" >
+   <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">姓名</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="user_id" name="user_id" type="text" 
+             value="" placeholder="请输入姓名">
+      </div>
+   </div>
+    <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">身份证号</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="idcard" name="idcard" type="text" 
+             value="" placeholder="请输入身份证号">
+      </div>
+   </div>
+   <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">密码</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="passwords" name="passwords" type="password" 
+             value="" placeholder="请输入密码">
+      </div>
+   </div>
+   <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">密码</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="confirmPasswords" name="confirmPasswords" type="password" 
+             value="" placeholder="请再次输入密码">
+      </div>
+   </div>
+   <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">家庭住址</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="adress"  name="adress" type="text" 
+             value="" placeholder="家庭住址">
+      </div>
+   </div>
+   <div class="form-group  has-success">
+      <div class="col-sm-offset-2 col-sm-10">
+         <button type="submit" class="btn btn-default">注册</button>
+      </div>
+   </div>
+	</form>
+   </div>
+   
+   <div class="tab-pane fade" id="form3">
+     <form class="form-horizontal" role="form" action="passion2.php" method="post" style="padding: 100px 200px"> 
+   <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">姓名</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="touristname" name="touristname" type="text" 
+              value="" placeholder="请输入您的姓名">
+      </div>
+   </div>
+  <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">密码</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="password"  name="password"type="password" 
+               value="" placeholder="请输入密码">
+      </div>
+   </div>
+   <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">密码</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" 
+               value="" placeholder="请再次输入密码">
+      </div>
+   </div>
+    <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">业主</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="resident" name="resident" type="text" 
+              value="" placeholder="请输入业主姓名">
+      </div>
+   </div>
+    <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">身份证号</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="idcard"  name="idcard" type="text" 
+             value="" placeholder="请输入您的身份证号">
+      </div>
+   </div>
+    <div class="form-group  has-success">
+      <label class="col-sm-2 control-label">key</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="key"  name="key"type="text" 
+            value="" placeholder="请输入您key">
+      </div>
+   </div>
+    <div class="form-group  has-success">
+      <div class="col-sm-offset-2 col-sm-10">
+         <button type="submit" class="btn btn-default">注册</button>
+      </div>
+   </div>
+	</form>
+   </div>
+   
+   <div class="tab-pane fade" id="form4" >
+  
+     <form class="form-horizontal" role="form" style="padding: 100px 200px" action="checkmanager.php" method="post">
+   <div class="form-group has-warning">
+      <label class="col-sm-2 control-label">管理员</label>
+      <div class="col-sm-10">
+         <input class="form-control" id="managername"  name="managername"type="text" 
+           value="" placeholder="请输入管理员号码">
+      </div>
+   </div>
+   <div class="form-group has-success">
+      <label for="inputPassword" class="col-sm-2 control-label">
+         管理员密码     </label>
+      <div class="col-sm-10">
+         <input class="form-control" id="managerpassword" name="managerpassword" type="password" 
+           id="" value="" placeholder="请输入管理员密码">
+      </div>
+   </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+         <button type="submit" class="btn btn-default">登录</button>
+      </div>
+   </div>
+  </form>
+   </div>
+   </div>
+   
+   
+   
+   
+  
+   
+   <script>
+   $(function(){
+      $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      // 获取已激活的标签页的名称
+      var activeTab = $(e.target).text(); 
+      // 获取前一个激活的标签页的名称
+      var previousTab = $(e.relatedTarget).text(); 
+      $(".active-tab span").html(activeTab);
+      $(".previous-tab span").html(previousTab);
+   });});</script></body></html>
