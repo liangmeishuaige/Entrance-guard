@@ -26,7 +26,74 @@ background-position:center;
 	window.open("authentication/demos/authentication.html","_blank");
 }
   </script>
-  
+<!-- 改用ajax传送数据到后端-->  
+ <script type="text/javascript"> 
+	fucntion login()
+	{
+		$.ajax({
+			type:"POST",//方法类型
+			dataType: "json",//预期服务器返回的数据类型
+			url: "../www/index.html" ,//（默认为当前页地址）发送请求的地址
+			data: $('#form1').serialize(),//把form表单的值序列化成一个字符串
+			success: function (result) 
+			{
+				console.log(result);//打印服务端返回的数据(调试用)
+				if (result.resultCode == 200) {
+					alert("登录成功!");
+				}
+				;
+			},
+			error : function() 
+			{
+                 alert("登录失败，请重试！");
+            }
+            });
+        }
+		
+		function register()
+		{
+			$.ajax({
+			type:"POST",//方法类型
+			dataType: "json",//预期服务器返回的数据类型
+			url: "../www/index.html" ,//（默认为当前页地址）发送请求的地址
+			data: $('#form2').serialize(),//把form表单的值序列化成一个字符串
+			success: function (result) 
+			{
+				console.log(result);//打印服务端返回的数据(调试用)
+				if (result.resultCode == 200) {
+					alert("注册成功!");
+				}
+				;
+			},
+			error : function() 
+			{
+                 alert("注册失败，请重试.");
+            }
+            });
+		}
+		
+		function register_form3()
+		{
+			$.ajax({
+			type:"POST",//方法类型
+			dataType: "json",//预期服务器返回的数据类型
+			url: "../www/index.html" ,//（默认为当前页地址）发送请求的地址
+			data: $('#form3').serialize(),//把form表单的值序列化成一个字符串
+			success: function (result) 
+			{
+				console.log(result);//打印服务端返回的数据(调试用)
+				if (result.resultCode == 200) {
+					alert("注册成功!");
+				}
+				;
+			},
+			error : function() 
+			{
+                 alert("注册失败，请重试.");
+            }
+            });
+		}
+ </script>
   </head>
   <body>
 	<div class="jumbotron" bgcolor="red">
@@ -83,7 +150,7 @@ background-position:center;
    </div>
     
    <div class="tab-pane fade bg" id="form1" bgcolor="red">
-     <form class="form-horizontal" role="form" style="padding: 100px 200px;border:1px;" action="login.php" method="post">
+     <form class="form-horizontal" role="form" style="padding: 100px 200px;border:1px;" onsubmit="return false" action="##" method="post">
    <div class="form-group has-warning">
       <label class="col-sm-2 control-label">用户名</label>
       <div class="col-sm-10">
@@ -101,7 +168,10 @@ background-position:center;
    </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-         <button type="submit" class="btn btn-default">登录</button>
+	  <!--
+        <button type="submit" class="btn btn-default">登录</button>
+		-->
+		<input  type="button" value="登录" onclick="login()">&nbsp;<input type="reset" value="重置">
       </div>
    </div>
   </form>
@@ -109,7 +179,7 @@ background-position:center;
    
    
    <div class="tab-pane fade" id="form2">
-     <form class="form-horizontal" role="form" action="passion.php" method="post"  style="padding: 100px 200px" >
+     <form class="form-horizontal" role="form"  onsubmit="return false" action="##" method="post"  style="padding: 100px 200px" >
    <div class="form-group  has-success">
       <label class="col-sm-2 control-label">姓名</label>
       <div class="col-sm-10">
@@ -147,14 +217,17 @@ background-position:center;
    </div>
    <div class="form-group  has-success">
       <div class="col-sm-offset-2 col-sm-10">
+	  <!--
          <button type="submit" class="btn btn-default">注册</button>
+		 -->
+		 <input  type="button" value="注册" onclick="register()">&nbsp;<input type="reset" value="重置">
       </div>
    </div>
 	</form>
    </div>
    
    <div class="tab-pane fade" id="form3">
-     <form class="form-horizontal" role="form" action="passion2.php" method="post" style="padding: 100px 200px"> 
+     <form class="form-horizontal" role="form" onsubmit="return false" action="##" method="post" style="padding: 100px 200px"> 
    <div class="form-group  has-success">
       <label class="col-sm-2 control-label">姓名</label>
       <div class="col-sm-10">
@@ -199,7 +272,10 @@ background-position:center;
    </div>
     <div class="form-group  has-success">
       <div class="col-sm-offset-2 col-sm-10">
+	  <!--
          <button type="submit" class="btn btn-default">注册</button>
+		 -->
+		<input  type="button" value="注册" onclick="register()">&nbsp;<input type="reset" value="重置">
       </div>
    </div>
 	</form>
